@@ -1,0 +1,17 @@
+<div class="max-w-xl mx-auto p-4">
+  
+
+  <div *ngIf="results.length === 0" class="text-gray-500">No results</div>
+
+  <ul *ngIf="results.length > 0" class="space-y-2">
+    <li *ngFor="let u of results" class="p-3 border rounded flex justify-between items-center">
+      <div>
+        <div class="font-semibold">{{ u.username }}</div>
+        <div class="text-sm text-gray-500">{{ u.email }}</div>
+      </div>
+      <a [routerLink]="['/profile']" [queryParams]="{ id: u._id }" class="text-blue-600 hover:underline">View</a>
+    </li>
+  </ul>
+</div>
+
+

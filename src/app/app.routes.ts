@@ -6,11 +6,13 @@ import {Post} from './post/post';
 import {Home} from './home/home';
 import {Profile} from './profile/profile';
 import {Settings} from './settings/settings';
+import {Search} from './search/search';
 import {authGuardGuard} from './guards/auth-guard-guard';
 
 export const routes: Routes = [
   {path:'',component:Home},
   {path:'feed',component:Feed},
+  {path:'search',component:Search},
   {path:'login',component:Login},
   {path:'register',component:Register},
   {path:'post',component:Post ,canActivate: [authGuardGuard]},

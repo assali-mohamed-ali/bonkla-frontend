@@ -6,6 +6,7 @@ import { tap } from 'rxjs';
 })
 export class Auth {
   private baseUrl = 'http://localhost:5000/api/auth';
+  private currentUser: { id: string; username: string; role?: string } | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -13,6 +14,10 @@ export class Auth {
     return this.http.post(`${this.baseUrl}/login`, credentials).pipe(
       tap((res: any) => {
         localStorage.setItem('token', res.token);
+        if (res.user) {
+          this.currentUser = res.user;
+          localStorage.setItem('user', JSON.stringify(res.user));
+        }
       })
     );
   }
@@ -23,6 +28,8 @@ export class Auth {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.currentUser = null;
   }
 
   getToken(): string | null {
@@ -31,5 +38,13 @@ export class Auth {
 
   isLoggedIn(): boolean {
     return !!this.getToken();
+  }
+
+  getUser() {
+    if (!this.currentUser) {
+      const raw = localStorage.getItem('user');
+      this.currentUser = raw ? JSON.parse(raw) : null;
+    }
+    return this.currentUser;
   }
 }

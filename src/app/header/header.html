@@ -1,11 +1,142 @@
-<nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
-  <div class="text-2xl font-bold text-gray-800">Bonkla</div>
-  <div class="space-x-4">
-    <a routerLink="/feed" class="text-gray-700 hover:text-blue-600 font-medium">Fil</a>
-    <a routerLink="/post" class="text-gray-700 hover:text-blue-600 font-medium">Nouveau</a>
-    <a routerLink="/profile" class="text-gray-700 hover:text-blue-600 font-medium">Profil</a>
-    <a routerLink="/settings" class="text-gray-700 hover:text-blue-600 font-medium">Paramètres</a>
-    <a routerLink="/login" class="text-gray-700 hover:text-green-600 font-medium">Connexion</a>
-    <a routerLink="/register" class="text-gray-700 hover:text-green-600 font-medium">Inscription</a>
+<nav class="bg-gradient-to-r from-blue-600 to-purple-700 shadow-xl border-b border-blue-500/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a routerLink="/" class="text-2xl font-bold text-white hover:text-blue-200 transition-colors duration-200">
+          <span class="bg-white bg-clip-text text-transparent">
+            Bonkla
+          </span>
+        </a>
+      </div>
+
+      <!-- Search Bar - Desktop -->
+      <div class="hidden md:block flex-1 max-w-lg mx-8">
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+          <input 
+            #searchInput 
+            type="text" 
+            placeholder="Rechercher..." 
+            class="block w-full pl-10 pr-3 py-2 border border-transparent rounded-lg bg-white/10 backdrop-blur-sm text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition-all duration-200"
+            (keyup.enter)="search(searchInput.value)"
+          />
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-1">
+          <a routerLink="/feed" 
+             class="text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:scale-105">
+            <i class="fas fa-home mr-1"></i>Fil
+          </a>
+          <a routerLink="/post" 
+             class="text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:scale-105">
+            <i class="fas fa-plus mr-1"></i>Nouveau
+          </a>
+          <a routerLink="/profile" 
+             class="text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:scale-105">
+            <i class="fas fa-user mr-1"></i>Profil
+          </a>
+          <a routerLink="/settings" 
+             class="text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:scale-105">
+            <i class="fas fa-cog mr-1"></i>Paramètres
+          </a>
+        </div>
+      </div>
+
+      <!-- Auth Buttons -->
+      <div class="hidden md:block">
+        <div class="ml-4 flex items-center space-x-2">
+          @if(!auth.isLoggedIn()){
+            <a routerLink="/login" 
+               class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 backdrop-blur-sm">
+              Connexion
+            </a>
+            <a routerLink="/register" 
+               class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 shadow-lg">
+              Inscription
+            </a>
+          }
+          @if(auth.isLoggedIn()){
+            <button (click)="logout()" 
+                    class="bg-red-500/20 hover:bg-red-500/30 text-red-200 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 backdrop-blur-sm border border-red-400/30">
+              <i class="fas fa-sign-out-alt mr-1"></i>Déconnexion
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button type="button" 
+                class="bg-white/10 hover:bg-white/20 inline-flex items-center justify-center p-2 rounded-md text-white hover:text-blue-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-all duration-200"
+                (click)="toggleMobileMenu()">
+          <span class="sr-only">Ouvrir le menu principal</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden" [class.hidden]="!mobileMenuOpen">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/5 backdrop-blur-sm rounded-lg mt-2">
+        <!-- Mobile Search -->
+        <div class="px-3 py-2">
+          <input 
+            #mobileSearchInput 
+            type="text" 
+            placeholder="Rechercher..." 
+            class="block w-full px-3 py-2 border border-transparent rounded-lg bg-white/10 backdrop-blur-sm text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+            (keyup.enter)="search(mobileSearchInput.value)"
+          />
+        </div>
+        
+        <!-- Mobile Navigation Links -->
+        <a routerLink="/feed" 
+           class="text-white hover:bg-white/10 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
+          <i class="fas fa-home mr-2"></i>Fil
+        </a>
+        <a routerLink="/post" 
+           class="text-white hover:bg-white/10 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
+          <i class="fas fa-plus mr-2"></i>Nouveau
+        </a>
+        <a routerLink="/profile" 
+           class="text-white hover:bg-white/10 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
+          <i class="fas fa-user mr-2"></i>Profil
+        </a>
+        <a routerLink="/settings" 
+           class="text-white hover:bg-white/10 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200">
+          <i class="fas fa-cog mr-2"></i>Paramètres
+        </a>
+        
+        <!-- Mobile Auth Buttons -->
+        <div class="pt-4 pb-3 border-t border-white/10">
+          @if(!auth.isLoggedIn()){
+            <a routerLink="/login" 
+               class="block px-3 py-2 text-white hover:bg-white/10 rounded-md text-base font-medium transition-all duration-200">
+              Connexion
+            </a>
+            <a routerLink="/register" 
+               class="block px-3 py-2 text-white hover:bg-white/10 rounded-md text-base font-medium transition-all duration-200">
+              Inscription
+            </a>
+          }
+          @if(auth.isLoggedIn()){
+            <button (click)="logout()" 
+                    class="block w-full text-left px-3 py-2 text-red-200 hover:bg-red-500/20 rounded-md text-base font-medium transition-all duration-200">
+              <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
+            </button>
+          }
+        </div>
+      </div>
+    </div>
   </div>
 </nav>

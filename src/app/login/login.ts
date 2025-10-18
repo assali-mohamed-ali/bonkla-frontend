@@ -22,8 +22,9 @@ export class Login {
     this.auth.login({ email: this.email, password: this.password })
       .subscribe({
         next: () => {
-          alert('Connexion réussie !');
-          this.router.navigate(['/']);
+          
+          this.router.navigate(['']);
+          
         },
         error: (err) => alert(err.error.message)
       });

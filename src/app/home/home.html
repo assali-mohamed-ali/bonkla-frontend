@@ -1,9 +1,291 @@
-<div class="flex flex-col items-center justify-center min-h-screen text-center bg-gray-50 px-4">
-  <h1 class="text-4xl font-bold mb-4 text-gray-800">Bienvenue sur Bonkla</h1>
-  <p class="text-gray-600 mb-6 max-w-md">
-    Partage tes plats préférés, découvre de nouvelles saveurs et connecte-toi avec d'autres passionnés de cuisine.
-  </p>
-  <a routerLink="/feed" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
-    Explorer les publications
-  </a>
+<!-- Hero Section -->
+<div class="relative min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-black/20"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+  
+  <!-- Floating Elements -->
+  <div class="absolute top-20 left-10 w-20 h-20 bg-blue-500/30 rounded-full blur-xl animate-pulse"></div>
+  <div class="absolute top-40 right-20 w-32 h-32 bg-purple-500/30 rounded-full blur-xl animate-pulse delay-1000"></div>
+  <div class="absolute bottom-20 left-1/4 w-16 h-16 bg-pink-500/30 rounded-full blur-xl animate-pulse delay-500"></div>
+  
+  <!-- Content -->
+  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
+    <!-- Logo/Brand -->
+    <div class="mb-8">
+      <h1 class="text-6xl md:text-8xl font-bold text-white mb-4 hero-title">
+        <span class="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-transparent animate-glow">
+          Bonkla
+        </span>
+      </h1>
+      <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-pink-500 mx-auto rounded-full"></div>
+    </div>
+    
+    <!-- Main Description -->
+    <div class="max-w-4xl mx-auto mb-12">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight hero-subtitle">
+        Découvre, Partage, Inspire
+      </h2>
+      <p class="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
+        La plateforme où la créativité rencontre la communauté. Partage tes moments, 
+        découvre de nouveaux contenus et connecte-toi avec des créateurs du monde entier.
+      </p>
+    </div>
+    
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 mb-16">
+      <a routerLink="/feed" 
+         class="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg btn-primary">
+        <i class="fas fa-play mr-2 group-hover:translate-x-1 transition-transform"></i>
+        Explorer le Feed
+      </a>
+      <a routerLink="/register" 
+         class="group bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 border border-white/30">
+        <i class="fas fa-user-plus mr-2 group-hover:rotate-12 transition-transform"></i>
+        Rejoindre la Communauté
+      </a>
+    </div>
+    
+    <!-- Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <div class="text-center">
+        <div class="text-4xl font-bold text-white mb-2">10K+</div>
+        <div class="text-gray-300">Utilisateurs Actifs</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-white mb-2">50K+</div>
+        <div class="text-gray-300">Publications</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-white mb-2">1M+</div>
+        <div class="text-gray-300">Interactions</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <i class="fas fa-chevron-down text-white text-2xl"></i>
+  </div>
 </div>
+
+<!-- Features Section -->
+<div class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        Pourquoi Choisir Bonkla ?
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Une expérience unique qui combine créativité, communauté et innovation
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Feature 1 -->
+      <div class="text-center group feature-card">
+        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 animate-float">
+          <i class="fas fa-video text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Contenu Vidéo</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Partage tes moments en vidéo avec une qualité optimale. 
+          Notre plateforme supporte tous les formats pour une expérience fluide.
+        </p>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="text-center group feature-card">
+        <div class="w-20 h-20 bg-gradient-to-r from-pink-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 animate-float" style="animation-delay: 1s;">
+          <i class="fas fa-heart text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Engagement Social</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Like, commente et partage tes contenus préférés. 
+          Construis une communauté autour de tes passions.
+        </p>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="text-center group feature-card">
+        <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 animate-float" style="animation-delay: 2s;">
+          <i class="fas fa-users text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Communauté Active</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Rejoins une communauté dynamique de créateurs et découvre 
+          des contenus inspirants du monde entier.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- How It Works Section -->
+<div class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        Comment Ça Marche ?
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Trois étapes simples pour commencer ton aventure sur Bonkla
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Step 1 -->
+      <div class="text-center relative">
+        <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
+          1
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Crée ton Compte</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Inscris-toi en quelques secondes et personnalise ton profil 
+          pour commencer à partager tes contenus.
+        </p>
+        <div class="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gray-300 transform translate-x-6"></div>
+      </div>
+      
+      <!-- Step 2 -->
+      <div class="text-center relative">
+        <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
+          2
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Partage tes Moments</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Télécharge tes vidéos et photos, ajoute une description 
+          et partage avec la communauté Bonkla.
+        </p>
+        <div class="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gray-300 transform translate-x-6"></div>
+      </div>
+      
+      <!-- Step 3 -->
+      <div class="text-center">
+        <div class="w-16 h-16 bg-pink-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
+          3
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Explore & Connecte</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Découvre des contenus incroyables, interagis avec d'autres 
+          utilisateurs et construis ton réseau.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        Ce Que Disent Nos Utilisateurs
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Découvre pourquoi des milliers de créateurs nous font confiance
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="bg-gray-50 p-8 rounded-2xl testimonial-card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+            M
+          </div>
+          <div class="ml-4">
+            <h4 class="font-bold text-gray-900">Marie Dubois</h4>
+            <p class="text-gray-600">Créatrice de Contenu</p>
+          </div>
+        </div>
+        <p class="text-gray-700 italic">
+          "Bonkla a révolutionné ma façon de partager mes créations. 
+          La communauté est incroyablement supportive et engageante."
+        </p>
+        <div class="flex text-yellow-400 mt-4">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+      
+      <!-- Testimonial 2 -->
+      <div class="bg-gray-50 p-8 rounded-2xl testimonial-card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold">
+            A
+          </div>
+          <div class="ml-4">
+            <h4 class="font-bold text-gray-900">Alex Martin</h4>
+            <p class="text-gray-600">Influenceur</p>
+          </div>
+        </div>
+        <p class="text-gray-700 italic">
+          "L'interface est intuitive et les fonctionnalités sont parfaites 
+          pour créer du contenu de qualité. Je recommande vivement !"
+        </p>
+        <div class="flex text-yellow-400 mt-4">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+      
+      <!-- Testimonial 3 -->
+      <div class="bg-gray-50 p-8 rounded-2xl testimonial-card">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center text-white font-bold">
+            S
+          </div>
+          <div class="ml-4">
+            <h4 class="font-bold text-gray-900">Sophie Chen</h4>
+            <p class="text-gray-600">Artiste</p>
+          </div>
+        </div>
+        <p class="text-gray-700 italic">
+          "Grâce à Bonkla, j'ai pu partager mon art avec une communauté 
+          qui apprécie vraiment la créativité. C'est devenu ma plateforme préférée !"
+        </p>
+        <div class="flex text-yellow-400 mt-4">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Section -->
+<div class="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+  <div class="max-w-4xl mx-auto text-center px-4">
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+      Prêt à Commencer ?
+    </h2>
+    <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+      Rejoins la communauté Bonkla et commence à partager tes créations 
+      avec des milliers d'utilisateurs passionnés.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a routerLink="/register" 
+         class="bg-white text-blue-600 font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+        <i class="fas fa-rocket mr-2"></i>
+        Commencer Maintenant
+      </a>
+      <a routerLink="/feed" 
+         class="bg-white/20 backdrop-blur-sm text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-white/30 transition-all duration-300 transform hover:scale-105 border border-white/30">
+        <i class="fas fa-eye mr-2"></i>
+        Voir les Exemples
+      </a>
+    </div>
+  </div>
+</div>
+
+
